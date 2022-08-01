@@ -3,7 +3,6 @@ const app = express();
 const todos = require('./routes/todos')
 const connectDB = require('./db/connect')
 require('dotenv').config()
-const path = require('path')
 const cors = require('cors')
 
 app.use(function (req, res, next) {
@@ -20,16 +19,6 @@ app.use(express.json())
 //routes
 
 app.use('/todos', todos)
-
-app.use(express.static(path.join(__dirname, './frontend/build')))
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, './client/build/index.html'), (err) => {
-    if (err) {
-      res.status(500).send(err)
-    }
-  })
-})
 
 const port = process.env.PORT || 5000
 
