@@ -21,14 +21,15 @@ app.use(express.json())
 
 app.use('/todos', todos)
 
-if(process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build'))
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+app.use(express.static(path.join(__dirname, './frontend/build')))
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, './client/build'), (err) => {
+    if (err) {
+      res.status(500).send(err)
+    }
   })
-}
-
-
+})
 
 const port = process.env.PORT || 5000
 

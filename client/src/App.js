@@ -6,7 +6,7 @@ export default function App() {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
-      fetch('/todos')
+      fetch('http://localhost:5000/todos')
         .then(res => res.json())
         .then(data => { 
           let todolist = [];
@@ -34,7 +34,7 @@ export default function App() {
 			})
     }
 
-    let postData = fetch('/todos', postOption)
+    let postData = fetch('http://localhost:5000/todos', postOption)
     
     postData
       .then(res => res.json())
