@@ -11,10 +11,14 @@ const createTodo = async (req, res) => {
 }
 
 const deleteTodo = async (req, res) => {
-    const {id:todoID} = req.params;
-    const todo = await Todo.findByIdAndDelete({_id: todoID})
-        .then(() => res.json('Post was deleted!'))
-        .catch(err => res.status(404).json('Error: ' + err))
+    
+    try {
+        const delTodo = await Todo.findByIdAndDelete(req.params.id);
+        
+        res.status(200).json({delTodo});
+    } catch (err) {
+        res.status(404).json(err)
+    }
 }
 
 module.exports = {

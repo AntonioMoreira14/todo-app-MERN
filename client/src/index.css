@@ -97,3 +97,14 @@ ul > li {
   background-color: rgb(228, 77, 77);
   margin-left: auto;
 }
+
+@media screen and (max-width: 540px) {
+  .todo-body {
+    padding: 15px;
+    margin-right: 3%;
+    margin-left: 3%;
+  }
+  .input-box {
+    padding: 10px 14px;
+  }
+}
