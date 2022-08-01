@@ -6,7 +6,7 @@ export default function App() {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
-      fetch('/todos')
+      fetch('https://todolist-mern-project.herokuapp.com//todos')
         .then(res => res.json())
         .then(data => { 
           let todolist = [];
@@ -34,7 +34,7 @@ export default function App() {
 			})
     }
 
-    let postData = fetch('/todos', postOption)
+    let postData = fetch('https://todolist-mern-project.herokuapp.com//todos', postOption)
     
     postData
       .then(res => res.json())
@@ -52,7 +52,7 @@ export default function App() {
       body: null
     }
 
-    let deleteData =  fetch(`/todos/${id}`, deleteOption)
+    let deleteData =  fetch(`https://todolist-mern-project.herokuapp.com//todos/${id}`, deleteOption)
     
     deleteData.then(res => res.json()).then(() => { 
         const listTodos = todos.filter(todo => todo.id !== id)
